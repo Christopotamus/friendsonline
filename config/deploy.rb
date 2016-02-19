@@ -50,7 +50,7 @@ namespace :deploy do
   desc "Restarting Unicorn"
   task :restart do 
     on roles(:app) do
-      execute "cd #{current_path} && sudo bundle install  --without=test "
+      #execute "cd #{current_path} && sudo bundle install --without development test"
       execute 'sudo /etc/init.d/unicorn4 restart'
     end
   end
