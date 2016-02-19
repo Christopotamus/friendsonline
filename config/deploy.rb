@@ -1,4 +1,5 @@
 
+
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
@@ -50,17 +51,20 @@ namespace :deploy do
   desc "Restarting Unicorn"
   task :restart do 
     on roles(:app) do
-      #execute "cd #{current_path} && sudo bundle install --without development test"
+      execute "cd #{current_path} && bundle install"
+      
       execute 'sudo /etc/init.d/unicorn4 restart'
     end
   end
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+       within release_path do
+         execute :rake, 'assets:precompile'
+       end
     end
   end
 
 end
+
+
