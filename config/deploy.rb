@@ -51,7 +51,7 @@ namespace :deploy do
   desc "Restarting Unicorn"
   task :restart do 
     on roles(:app) do
-      execute "cd #{current_path} && bundle install"
+      #execute "cd #{current_path} && bundle install"
       
       execute 'sudo /etc/init.d/unicorn4 restart'
     end
