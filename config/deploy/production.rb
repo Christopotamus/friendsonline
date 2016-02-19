@@ -8,6 +8,7 @@ role :db, %w{rails@enormousbutts.com}
 # server, 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
+ask(:password, nil, echo: false)
 server "enormousbutts.com", user: 'rails', roles: %w{app db web}
 
 
@@ -62,3 +63,4 @@ server "enormousbutts.com", user: 'rails', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
