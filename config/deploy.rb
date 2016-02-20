@@ -51,8 +51,10 @@ namespace :deploy do
   desc "Bundle"
   task :bundle do
     on roles(:web) do
-      within release_path do
-        execute :bundle, "install"
+      with rails_env: :production do
+        within release_path do
+          execute :bundle, "install"
+        end 
       end 
     end 
   end
