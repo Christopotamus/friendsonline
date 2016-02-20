@@ -67,7 +67,6 @@ namespace :deploy do
   desc "Restarting Unicorn"
   task :restart do 
     on roles(:app) do
-
       execute 'sudo /etc/init.d/unicorn4 restart'
     end
   end
@@ -79,7 +78,7 @@ namespace :deploy do
       end
     end
   end
-
+  after 'deploy', 'deploy:restart'
 end
 
 
